@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="container mt-5">
+    <h1 class="mb-4">Ricerca un album</h1>
+  
+    <form>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Search" #newsearch>
+        <div class="input-group-append">
+          <button class="btn btn-primary" type="button" (click)="trova(newsearch)">Search</button>
+        </div>
+      </div>
+    </form>
+  
+    <div *ngIf="res">
+      <div *ngIf="!res.albums || res.albums.items.length == 0" class="alert alert-warning">
+        No Albums were found with the term '{{ search }}'
+      </div>
+  
+      <div *ngIf="res.albums &&  res.albums.items.length > 0">
+        <h1 class="mt-4">Results</h1>
+        <div class="row">
+          <div class="col-sm-6 col-md-4" *ngFor="let a of res.albums.items">
+            <div class="card mb-4">
+              <img src="{{ a.images[0].url }}" class="card-img-top" alt="{{ a.name }}">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <a >
+                    {{ a.name }}
+                  </a>
+                </h5>
+                <p class="card-text">
+               
+                  <a> anno: {{a.release_date}}</a>
+                  <br>
+                  <a>Canzoni totali presenti nell'album: {{a.total_tracks}}</a>
+                </p>
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">
+                  <a>
+                    {{ a.artists[0].name }}
+                  </a>
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+</body>
+</html>

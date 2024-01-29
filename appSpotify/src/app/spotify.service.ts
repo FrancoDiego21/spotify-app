@@ -14,11 +14,38 @@ export class SpotifyService {
     const url = `https://api.spotify.com/v1/search?q=${query}&type=track`;
     const headers = new HttpHeaders({
       Authorization:
-        'Bearer BQA64uGraUiqdpIaUCiPI7kLnhcU_gIe6fG3n_suYJQzzqiZ1FBeo8oE4rCWzfn3y5bAuRAiX-z70YFgj1iRo9zOC-DqN352tNZUbntGpJYxZRDZVxl2qIEhUvyU2LkwyIcxQjtsfJCCcNob4dKSaIS0e-81dk_OWVbiL3V9uBrZdzL2iwN8vd1G7uFpZmU1hLnY-G_0gkfpx_0'
+        ' Bearer BQAzKP_pvLVwq8CKgIkUCgkLT8Vq24kjG6fuBMlfJnTFkBrPoUZc20426c8jMycdxz5WibnVpF4JRDhdlokDvmjJ7nm_RObMpEImRuZzCu8_Y9RztgmbIouKWvqTZarHq2X6V4O0RIZT_oXwen8Iib9NseEWmeSRM9CieEoQ0-pberYpWhMnmp35_VBkxxyb2E4b_IdEhkONpXs'
     });
 
     let obsTracks = this.http.get(url, { headers });
     return obsTracks;
  //Ritorno un observable ai componenti che richiedono il servizio
+  }
+
+
+  searchArtist(query:string){
+    const url = `https://api.spotify.com/v1/search?q=${query}&type=artist`;
+    const headers = new HttpHeaders({
+      Authorization:
+        ' Bearer BQAzKP_pvLVwq8CKgIkUCgkLT8Vq24kjG6fuBMlfJnTFkBrPoUZc20426c8jMycdxz5WibnVpF4JRDhdlokDvmjJ7nm_RObMpEImRuZzCu8_Y9RztgmbIouKWvqTZarHq2X6V4O0RIZT_oXwen8Iib9NseEWmeSRM9CieEoQ0-pberYpWhMnmp35_VBkxxyb2E4b_IdEhkONpXs'
+    });
+
+    let obsArtist = this.http.get(url, { headers });
+    return obsArtist;
+
+
+  }
+
+  searchAlbum(query:string){
+    const url = `https://api.spotify.com/v1/search?q=${query}&type=album`;
+    const headers = new HttpHeaders({
+      Authorization:
+        ' Bearer BQAzKP_pvLVwq8CKgIkUCgkLT8Vq24kjG6fuBMlfJnTFkBrPoUZc20426c8jMycdxz5WibnVpF4JRDhdlokDvmjJ7nm_RObMpEImRuZzCu8_Y9RztgmbIouKWvqTZarHq2X6V4O0RIZT_oXwen8Iib9NseEWmeSRM9CieEoQ0-pberYpWhMnmp35_VBkxxyb2E4b_IdEhkONpXs'
+    });
+
+    let obsAlbum = this.http.get(url, { headers });
+    return obsAlbum;
+
+
   }
 }

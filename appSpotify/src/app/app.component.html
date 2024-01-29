@@ -12,66 +12,21 @@
 
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="/">Cerca una canzone</a>
+        <a class="nav-link" routerLink="/track">Cerca una Canzone</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Cerca un album </a>
+        <a class="nav-link" routerLink="/artist">Cerca un Artista </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Boh</a>
+        <a class="nav-link" routerLink="/album">Cerca un Album </a>
       </li>
     </ul>
   
   </nav>
-  <div class="container mt-5">
-    <h1 class="mb-4">Ricerca una canzone</h1>
   
-    <form>
-      <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Search" #newsearch>
-        <div class="input-group-append">
-          <button class="btn btn-primary" type="button" (click)="trova(newsearch)">Search</button>
-        </div>
-      </div>
-    </form>
-  
-    <div *ngIf="res">
-      <div *ngIf="!res.tracks || res.tracks.items.length == 0" class="alert alert-warning">
-        No tracks were found with the term '{{ search }}'
-      </div>
-  
-      <div *ngIf="res.tracks &&  res.tracks.items.length > 0">
-        <h1 class="mt-4">Results</h1>
-        <div class="row">
-          <div class="col-sm-6 col-md-4" *ngFor="let t of res.tracks.items">
-            <div class="card mb-4">
-              <img src="{{ t.album.images[0].url }}" class="card-img-top" alt="{{ t.name }}">
-              <div class="card-body">
-                <h5 class="card-title">
-                  <a [routerLink]="['/artists', t.artists[0].id]">
-                    {{ t.artists[0].name }}
-                  </a>
-                </h5>
-                <p class="card-text">
-                  <a [routerLink]="['/tracks', t.id]">
-                    {{ t.name }}
-                  </a>
-                </p>
-              </div>
-              <div class="card-footer">
-                <small class="text-muted">
-                  <a [routerLink]="['/albums', t.album.id]">
-                    {{ t.album.name }}
-                  </a>
-                </small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div>
+    <router-outlet></router-outlet>
   </div>
-  
 
 
 </body>
